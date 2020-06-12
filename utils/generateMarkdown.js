@@ -1,7 +1,8 @@
-function generateMarkdown(data) {
+function generateMarkdown(res) {
   return `
-# ${data.title}
+# ${res.data.login}
 
+## Description 
 `;
 }
 

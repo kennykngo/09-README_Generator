@@ -1,12 +1,18 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 const questions = [
   {
     type: "input",
-    name: "github",
+    name: "username",
     message: "Enter GitHub username.",
+  },
+  {
+    type: "input",
+    name: "title",
+    message: "Enter project title.",
   },
 ];
 
@@ -19,16 +25,15 @@ function init() {
       .get(`https://api.github.com/users/${res.github}`)
       .then(function (res) {
         console.log(res);
-        var README = `
-# username: ${res.data.login}
-    
-url: ${res.data.url}
-\n
-avatar url: ${res.data.avatar_url}
+        console.log(generateMarkdown(res));
 
-      `;
-
-        return README;
+        //         var README = `
+        // # username: ${res.data.login}
+        // url: ${res.data.url}
+        // \n
+        // avatar url: ${res.data.avatar_url}
+        //       `;
+        // return README;
       })
       .then(function (data) {
         fs.writeFileSync("./README.md", data, (err) => {
