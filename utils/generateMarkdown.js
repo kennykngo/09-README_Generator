@@ -1,15 +1,23 @@
 // const writeToFile = require("../index");
 
-function generateMarkdown(data) {
+function generateMarkdown(result, response) {
   return `
-# ${data.title}
+# ${result.title}
 
 ## Description 
+![github-avatar](${response.data.avatar_url})
 
 * [Installation](#installation)
+* [Credit](#credit)
+
 
 ## Installation
+* ${result.installation}
 
+## Credit
+
+
+${result.email}
 `;
 }
 
