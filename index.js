@@ -7,41 +7,42 @@ const questions = [
   {
     type: "input",
     name: "username",
-    message: "Enter GitHub username.",
+    message: "Enter GitHub username",
+    default: "kennykngo",
   },
   {
     type: "input",
     name: "title",
-    message: "Enter project title.",
+    message: "What is the title of your project?",
+  },
+  {
+    type: "input",
+    name: "username",
+    message: "Enter GitHub username",
+    default: "kennykngo",
   },
 ];
 
-// function writetoFile(fileName, data) {}
-
-function init() {
-  inquirer.prompt(questions).then(function (res) {
-    // console.log(res);
+function writeToFile(fileName, data) {
+  inquirer.prompt(questions).then(function (result) {
+    console.log(result);
+    const genREADME = generateMarkdown(result);
     axios
-      .get(`https://api.github.com/users/${res.github}`)
-      .then(function (res) {
-        console.log(res);
-        console.log(generateMarkdown(res));
-
-        //         var README = `
-        // # username: ${res.data.login}
-        // url: ${res.data.url}
-        // \n
-        // avatar url: ${res.data.avatar_url}
-        //       `;
-        // return README;
+      .get(`https://api.github.com/users/${result.username}`)
+      .then(function (response) {
+        console.log(response);
       })
       .then(function (data) {
-        fs.writeFileSync("./README.md", data, (err) => {
+        fs.writeFileSync("./README.md", genREADME, (err) => {
           if (err) throw err;
-          // console.log(err);
           console.log("failed");
         });
       });
   });
 }
+
+function init() {
+  writeToFile();
+}
+
 init();

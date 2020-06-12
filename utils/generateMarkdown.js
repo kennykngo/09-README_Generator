@@ -1,8 +1,15 @@
-function generateMarkdown(res) {
+// const writeToFile = require("../index");
+
+function generateMarkdown(data) {
   return `
-# ${res.data.login}
+# ${data.title}
 
 ## Description 
+
+* [Installation](#installation)
+
+## Installation
+
 `;
 }
 
