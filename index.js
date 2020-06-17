@@ -23,9 +23,38 @@ const questions = [
   },
   {
     type: "input",
+    name: "description",
+    message: "Add a short description about your project.",
+    default: "This project is about creating 'README.md' files",
+  },
+  {
+    type: "input",
     name: "installation",
     message: "What code do you need to get project started?",
-    default: "NodeJS",
+    default: "npm install",
+  },
+  {
+    type: "input",
+    name: "credit",
+    message: "Add links or names of people you would like to credit. ",
+    default: "Kenny Ngo: https://github.com/kennykngo",
+  },
+  {
+    type: "input",
+    name: "usage",
+    message: "Provide usage of the code.",
+    default: "Project is used to generate 'README.md' easier.",
+  },
+  {
+    type: "input",
+    name: "license",
+    message: "Let other developers know what they can and cannot do.",
+  },
+  {
+    type: "confirm",
+    name: "contributing",
+    message: "Let developers know if how they can contribute",
+    default: "Yes",
   },
 ];
 

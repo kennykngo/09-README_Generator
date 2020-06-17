@@ -3,21 +3,36 @@
 function generateMarkdown(result, response) {
   return `
 # ${result.title}
+![github-avatar](${response.data.avatar_url}?s=100x100)
 
 ## Description 
-![github-avatar](${response.data.avatar_url})
+> ${result.description}
 
+## Table of Contents
 * [Installation](#installation)
 * [Credit](#credit)
-
+* [Usage](#usage)
+* [License](#license)
 
 ## Installation
-* ${result.installation}
+${result.installation}
 
 ## Credit
+${result.credit}
 
+## Usage
+${result.usage}
 
-${result.email}
+## License
+${result.license}
+
+## Badges
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+
+[Email me!](mailto:${result.email})
+---
+© 2020 
+
 `;
 }
 
